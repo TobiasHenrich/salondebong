@@ -148,7 +148,7 @@ img {
    ============================================ */
 
 .aktion-banner {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    background: linear-gradient(135deg, var(--petrol-dark) 0%, var(--petrol) 100%);
     color: white;
     padding: 12px 20px;
     position: sticky;
@@ -185,8 +185,8 @@ img {
 }
 
 .aktion-btn {
-    background: var(--accent);
-    color: var(--text-dark);
+    background: white;
+    color: var(--petrol-dark);
     padding: 6px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -195,7 +195,7 @@ img {
 }
 
 .aktion-btn:hover {
-    background: var(--accent-light);
+    background: rgba(255,255,255,0.9);
 }
 
 .aktion-close {
@@ -282,14 +282,14 @@ img {
 }
 
 .cta-nav {
-    background: var(--accent) !important;
+    background: var(--petrol) !important;
     color: white !important;
     padding: 10px 24px;
     border-radius: var(--radius);
 }
 
 .cta-nav:hover {
-    background: var(--accent-light) !important;
+    background: var(--petrol-light) !important;
     transform: translateY(-2px);
 }
 
