@@ -344,7 +344,7 @@ img {
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    opacity: 0.5;
+    opacity: 0.8;
     animation: ringFloat 8s ease-in-out infinite;
     pointer-events: none;
 }
@@ -411,11 +411,11 @@ img {
    ============================================ */
 
 .aktion-section {
-    background: var(--bg-light);
+    background: var(--primary);
 }
 
 .aktion-card {
-    background: white;
+    background: var(--secondary);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
@@ -424,7 +424,7 @@ img {
 }
 
 .aktion-header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--petrol-dark) 0%, var(--petrol) 100%);
     color: white;
     padding: 30px;
     display: flex;
@@ -450,17 +450,18 @@ img {
 
 .aktion-body {
     padding: 40px;
+    color: rgba(255,255,255,0.9);
 }
 
 .aktion-body h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
-    color: var(--accent);
+    color: var(--petrol-light);
 }
 
 .aktion-intro {
     font-size: 1.1rem;
-    color: var(--text-medium);
+    color: rgba(255,255,255,0.8);
     margin-bottom: 30px;
 }
 
@@ -489,12 +490,12 @@ img {
 }
 
 .aktion-detail p {
-    color: var(--text-medium);
+    color: rgba(255,255,255,0.7);
     margin: 0;
 }
 
 .aktion-cta {
-    background: var(--bg-light);
+    background: rgba(255,255,255,0.05);
     padding: 25px;
     border-radius: var(--radius);
     text-align: center;
@@ -509,33 +510,64 @@ img {
     flex-wrap: wrap;
 }
 
+.aktion-buttons .btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+}
+
+.aktion-buttons .btn-secondary:hover {
+    background: white;
+    color: var(--primary);
+}
+
+.aktion-buttons .btn-primary {
+    background: var(--petrol);
+    border-color: var(--petrol);
+}
+
+.aktion-buttons .btn-primary:hover {
+    background: var(--petrol-light);
+    border-color: var(--petrol-light);
+}
+
 .weisser-ring {
-    border-left: 3px solid var(--accent);
+    border-left: 3px solid var(--petrol-light);
     padding-left: 20px;
 }
 
 .weisser-ring h4 {
     margin-bottom: 10px;
+    color: white;
 }
 
 .weisser-ring p {
-    color: var(--text-medium);
+    color: rgba(255,255,255,0.7);
     margin-bottom: 10px;
 }
 
 .link-external {
-    color: var(--accent);
+    color: var(--petrol-light);
     font-weight: 600;
     transition: var(--transition);
 }
 
 .link-external:hover {
-    color: var(--accent-light);
+    color: white;
 }
 
 /* ============================================
    ABOUT SECTION
    ============================================ */
+
+.about-section {
+    background: linear-gradient(135deg, var(--petrol-dark) 0%, var(--petrol) 100%);
+    color: white;
+}
+
+.about-section .section-title {
+    color: white;
+}
 
 .about-content {
     display: grid;
@@ -550,7 +582,7 @@ img {
 }
 
 .about-text p {
-    color: var(--text-medium);
+    color: rgba(255,255,255,0.85);
     margin-bottom: 15px;
 }
 
@@ -562,7 +594,8 @@ img {
 }
 
 .value-tag {
-    background: var(--bg-light);
+    background: rgba(255,255,255,0.15);
+    color: white;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -576,7 +609,7 @@ img {
 }
 
 .location-card {
-    background: var(--bg-light);
+    background: rgba(255,255,255,0.1);
     padding: 25px;
     border-radius: var(--radius);
 }
@@ -584,10 +617,11 @@ img {
 .location-card h3 {
     margin-bottom: 5px;
     font-size: 1.25rem;
+    color: white;
 }
 
 .location-card p {
-    color: var(--text-light);
+    color: rgba(255,255,255,0.7);
     margin: 0;
 }
 
@@ -596,7 +630,16 @@ img {
    ============================================ */
 
 .gallery-section {
-    background: var(--bg-white);
+    background: var(--primary);
+    color: white;
+}
+
+.gallery-section .section-title {
+    color: white;
+}
+
+.gallery-section .section-subtitle {
+    color: rgba(255,255,255,0.6);
 }
 
 .gallery-grid {
@@ -646,8 +689,12 @@ img {
 }
 
 .gallery-note a {
-    color: var(--accent);
+    color: var(--petrol-light);
     font-weight: 600;
+}
+
+.gallery-note a:hover {
+    color: white;
 }
 
 /* ============================================
@@ -655,7 +702,12 @@ img {
    ============================================ */
 
 .contact-section {
-    background: var(--bg-light);
+    background: linear-gradient(135deg, var(--petrol) 0%, var(--petrol-light) 100%);
+    color: white;
+}
+
+.contact-section .section-title {
+    color: white;
 }
 
 .contact-content {
@@ -667,10 +719,11 @@ img {
 .contact-info h3 {
     margin-bottom: 10px;
     font-size: 1.5rem;
+    color: white;
 }
 
 .contact-info > p {
-    color: var(--text-medium);
+    color: rgba(255,255,255,0.8);
     margin-bottom: 30px;
 }
 
@@ -684,16 +737,18 @@ img {
     display: flex;
     align-items: center;
     gap: 15px;
-    background: white;
+    background: rgba(255,255,255,0.1);
     padding: 20px;
     border-radius: var(--radius);
     transition: var(--transition);
     border: 2px solid transparent;
+    color: white;
 }
 
 .contact-method:hover {
-    border-color: var(--accent);
+    border-color: white;
     transform: translateX(5px);
+    background: rgba(255,255,255,0.15);
 }
 
 .method-icon {
@@ -705,10 +760,11 @@ img {
 .contact-method strong {
     display: block;
     margin-bottom: 3px;
+    color: white;
 }
 
 .contact-method span:last-child {
-    color: var(--text-light);
+    color: rgba(255,255,255,0.7);
     font-size: 0.9rem;
 }
 
@@ -717,6 +773,7 @@ img {
     padding: 40px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow);
+    color: var(--text-dark);
 }
 
 .form-group {
@@ -727,6 +784,7 @@ img {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
+    color: var(--text-dark);
 }
 
 .form-group input,
@@ -739,13 +797,15 @@ img {
     font-family: var(--font-body);
     font-size: 1rem;
     transition: var(--transition);
+    background: white;
+    color: var(--text-dark);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--accent);
+    border-color: var(--petrol);
 }
 
 .form-group textarea {
