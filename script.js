@@ -2,145 +2,117 @@
 // SALONDEBONG TATTOOS - SCRIPTS
 // ============================================
 
-document.addEventListener('DOMContentLoaded', function() {
-    initNav();
-    initBanner();
-    initForm();
-});
+// Mobile Navigation Toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
 
-// ============================================
-// NAVIGATION
-// ============================================
-
-function initNav() {
-    const nav = document.querySelector('.nav');
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    // Scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
-    
-    // Mobile toggle
+if (navToggle) {
     navToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-    });
-    
-    // Close menu on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-        });
-    });
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const target = document.querySelector(targetId);
-            if (target) {
-                e.preventDefault();
-                const navHeight = nav.offsetHeight;
-                const bannerHeight = document.querySelector('.promo-banner').offsetHeight;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - bannerHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
+        navToggle.classList.toggle('active');
     });
 }
 
-// ============================================
-// PROMO BANNER
-// ============================================
+// Close mobile nav when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        navToggle.classList.remove('active');
+    });
+});
 
-function initBanner() {
-    // Check if banner was closed before
-    if (sessionStorage.getItem('bannerClosed')) {
-        document.getElementById('promo-banner').style.display = 'none';
-        document.querySelector('.nav').style.top = '0';
+// Close Banner
+function closeBanner() {
+    const banner = document.getElementById('aktion-banner');
+    if (banner) {
+        banner.style.display = 'none';
+        // Store in localStorage so it doesn't show again
+        localStorage.setItem('bannerClosed', 'true');
     }
 }
 
-function closeBanner() {
-    const banner = document.getElementById('promo-banner');
-    const nav = document.querySelector('.nav');
-    
-    banner.style.opacity = '0';
-    banner.style.transform = 'translateY(-100%)';
-    
-    setTimeout(() => {
+// Check if banner was already closed
+if (localStorage.getItem('bannerClosed') === 'true') {
+    const banner = document.getElementById('aktion-banner');
+    if (banner) {
         banner.style.display = 'none';
-        nav.style.top = '0';
-    }, 300);
-    
-    sessionStorage.setItem('bannerClosed', 'true');
+    }
 }
 
-// ============================================
-// CONTACT FORM
-// ============================================
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
 
-function initForm() {
-    const form = document.getElementById('contact-form');
-    
-    form.addEventListener('submit', function(e) {
+// Contact Form Handling
+const contactForm = document.getElementById('contact-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const formData = new FormData(form);
-        const data = {};
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
         
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
-        
-        // In production, this would send to a server or email
-        // For now, we'll show a success message
-        
-        const submitBtn = form.querySelector('button[type="submit"]');
+        // Show loading state
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        
-        submitBtn.textContent = 'Gesendet! ✓';
+        submitBtn.textContent = 'Wird gesendet...';
         submitBtn.disabled = true;
-        submitBtn.style.background = '#4CAF50';
         
-        // Create WhatsApp link as fallback
-        const name = data.name || '';
-        const email = data.email || '';
-        const location = data.location || '';
-        const message = data.message || '';
-        
-        const whatsappMessage = encodeURIComponent(
-            `Hallo! Kontakt über Website:\n\nName: ${name}\nE-Mail: ${email}\nStandort: ${location}\n\nNachricht:\n${message}`
-        );
-        
-        setTimeout(() => {
+        try {
+            // For now, just show success (in production, this would send to a server)
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Success message
+            contactForm.innerHTML = `
+                <div class="form-success">
+                    <span style="font-size: 3rem; display: block; margin-bottom: 20px;">✉️</span>
+                    <h3>Nachricht gesendet!</h3>
+                    <p style="color: var(--text-medium); margin-top: 10px;">
+                        Vielen Dank für deine Nachricht! Ich melde mich schnellstmöglich bei dir.
+                    </p>
+                    <p style="color: var(--text-light); margin-top: 20px; font-size: 0.9rem;">
+                        Du kannst mich auch direkt über WhatsApp oder Instagram DM erreichen.
+                    </p>
+                </div>
+            `;
+            
+        } catch (error) {
+            // Error handling
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-            submitBtn.style.background = '';
-            form.reset();
-            
-            // Optionally open WhatsApp
-            if (confirm('Möchtest du die Nachricht auch per WhatsApp senden?')) {
-                window.open(`https://wa.me/4915255474668?text=${whatsappMessage}`, '_blank');
-            }
-        }, 2000);
+            alert('Es gab einen Fehler beim Senden. Bitte versuche es erneut oder kontaktiere mich direkt über WhatsApp.');
+        }
     });
 }
 
-// ============================================
-// GALLERY (placeholder for future)
-// ============================================
+// Gallery Lightbox (placeholder - for future implementation)
+document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+        // In production, this would open a lightbox
+        console.log('Gallery item clicked - lightbox would open');
+    });
+});
 
-// Future: Lightbox functionality when real images are added
-// function initGallery() { ... }
+// Nav background on scroll
+const nav = document.querySelector('.nav');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
+console.log('Salondebong Tattoos - Website loaded 🤍');
