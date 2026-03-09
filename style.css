@@ -319,7 +319,7 @@ img {
    ============================================ */
 
 .hero {
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -337,19 +337,23 @@ img {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+	height: 100%
 }
 
 .hero .container {
-    position: relative;
+    position: absolute;
     z-index: 1;
+	bottom: 2rem;
+left: 50%	;
+transform: translateX(-50%);
 }
 
 .hero .btn {
     font-size: 1.1rem;
     padding: 16px 40px;
-    background: var(--petrol);
+    background: var(--secondary);
     color: white;
-    border-color: var(--petrol);
+    border-color: var(--secondary);
 }
 
 .hero .btn:hover {
