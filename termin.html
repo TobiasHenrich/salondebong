@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termin buchen | Salondebong Tattoos</title>
+    <meta name="description" content="Informationen zur Terminbuchung bei Salondebong Tattoos - Anzahlung, Stornierung und No-Show Richtlinien.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&family=Allura&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #006666 0%, #008B8B 50%, #20B2AA 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .termin-logo {
+            width: 120px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .termin-container {
+            max-width: 700px;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .termin-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #008B8B;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .termin-back:hover {
+            color: #006666;
+            transform: translateX(-5px);
+        }
+        
+        .termin-section {
+            margin-bottom: 35px;
+        }
+        
+        .termin-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .termin-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #008B8B;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #008B8B;
+        }
+        
+        .termin-section p {
+            color: #1a1a1a;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        
+        .termin-section p:last-child {
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .termin-container {
+                padding: 30px 20px;
+            }
+            
+            .termin-logo {
+                width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">
+        <img src="assets/logo.jpg" alt="Salondebong Tattoos" class="termin-logo">
+    </a>
+    
+    <div class="termin-container">
+        <a href="index.html" class="termin-back">
+            <span>←</span> Zurück zur Startseite
+        </a>
+        
+        <div class="termin-section">
+            <h2>Termin buchen</h2>
+            <p>Um dir deinen Termin zu sichern, ist eine Anzahlung erforderlich. Diese kannst du bequem über Paypal oder in Bar bei mir im Studio leisten. Die Anzahlung wird beim Endpreis berücksichtigt. Sie ist nicht erstattungsfähig, kann jedoch bei rechtzeitiger Absprache mit zukünftigen Terminen / Gutscheinen verrechnet werden.</p>
+        </div>
+        
+        <div class="termin-section">
+            <h2>Terminverschiebung</h2>
+            <p>Du kannst deinen Termin bis 48 Stunden vor dem vereinbarten Zeitpunkt verschieben.</p>
+            <p>Bitte beachte, dass bei wiederholtem Verschieben möglicherweise eine neue Anzahlung erforderlich ist. Bei Absagen nach der 48 Stunden Frist behalte ich mir vor, die getätigte Anzahlung einzubehalten.</p>
+        </div>
+        
+        <div class="termin-section">
+            <h2>No-Shows</h2>
+            <p>Solltest du einen Termin ohne vorherige Absage versäumen, behalte ich mir vor, eine Stornopauschale in Höhe von 50% des Dienstleistungspreises in Rechnung zu stellen.</p>
+        </div>
+    </div>
+</body>
+</html>
