@@ -774,6 +774,43 @@ img {
 }
 
 /* ============================================
+   TERMIN INFO BOX
+   ============================================ */
+
+.termin-info {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.termin-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.termin-subtitle {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 15px;
+}
+
+.btn-termin {
+    background: white;
+    color: var(--petrol-dark);
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.btn-termin:hover {
+    background: var(--accent-light);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 
@@ -923,5 +960,9 @@ img {
     
     .aktion-buttons {
         flex-direction: column;
+    }
+    
+    .termin-info {
+        text-align: center;
     }
 }
